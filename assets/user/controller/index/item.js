@@ -28,6 +28,9 @@
     function _Abacus(error = null) {
         //商品默认价格
         const $price = $(`.abacus .price`);
+
+        console.log("POST data:", _getPostData());
+        console.log("Response price:", res.data.price);
         //远程加载价格
         $price.html(`<i class="fa-duotone fa-regular fa-spinner-third icon-spin fs-6"></i>`);
 
@@ -180,7 +183,7 @@
                     $itemStock.removeClass("badge-soft-success").addClass("badge-soft-danger").html(`已售罄`);
                     return;
                 }
-                
+
                 $itemStock.removeClass("badge-soft-danger").addClass('badge-soft-success').html(`库存 ${res.data.stock}`);
                 $cashPay.fadeIn(150);
             },
@@ -265,8 +268,8 @@
                                     table = new Table("/user/api/index/card", dom.find('#shop-selection-table'));
                                     table.setPagination(10, [10, 20, 30]);
                                     table.setColumns([
-                                        {checkbox: true},
-                                        {field: 'draft', title: '剧透内容'},
+                                        { checkbox: true },
+                                        { field: 'draft', title: '剧透内容' },
                                         {
                                             field: 'draft_premium', title: '溢价', formatter: _ => {
                                                 if (_ == 0) {
